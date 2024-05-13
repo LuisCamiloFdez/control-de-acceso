@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
 	<script async defer src="js/sheets.js"></script-->
 	<title>Document</title>
 </head>
+
 <body>
 	<header>
 		<h1>Turnos siguientes</h1>
@@ -30,6 +32,15 @@
 		</div>
 	</main>
 
+	<!--Autenticación-->
+	<button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+	<button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+	<script async defer src="https://apis.google.com/js/api.js" id="gapi"></script>
+	<script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
+	<script async defer src="/js/auth.js" id="gapi"></script>
+
+
+
 
 	<!--Add buttons to initiate auth sequence and sign out>
 	<div>
@@ -37,9 +48,7 @@
 		<button id="signout_button" onclick="handleSignoutClick()">Cerrar sesión</button>
 	</div>
 	<script src="js/auth.js"></script-->
-	<footer>
-		<p>Hecho con amor por Calo de <a href="https://www.youtube.com/channel/UCWDxiTN0CBZzVwvHFQUk92w" target="_blank">puntoJson</a></p>
-		<p><a href="https://youtu.be/GUgf4UmYnHQ" target="_blank">¿Cómo lo hice?</a></p>
-	</footer>
+
 </body>
+
 </html>
