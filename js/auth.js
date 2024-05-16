@@ -8,7 +8,7 @@ const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
 
 let tokenClient;
 let gapiInited = false;
@@ -72,7 +72,7 @@ function handleAuthClick() {
         }
         document.getElementById('signout_button').style.visibility = 'visible';
         document.getElementById('authorize_button').innerText = 'Refresh';
-        await listMajors();
+        await getAlumnos();
     };
 
     if (gapi.client.getToken() === null) {
@@ -99,26 +99,3 @@ function handleSignoutClick() {
     }
 }
 
-/**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- */
-async function listMajors() {
-    let response;
-    try {
-        response = await gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: '1cXcUBHBlejeJavbiKNjuMmcFPrTZUfMFdUoHHNrDSOg',
-            range: 'ListaUsuarios!A:D',
-        });
-    } catch (err) {
-        console.error(err);
-        return;
-    }
-    const range = response.result;
-    if (!range || !range.values || range.values.length == 0) {
-        console.warn("No se encontraron valores");
-        return;
-    }
-    console.log(range.values);
-
-}
